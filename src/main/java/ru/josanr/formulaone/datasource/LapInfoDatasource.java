@@ -1,10 +1,10 @@
 package ru.josanr.formulaone.datasource;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface LapInfoDatasource {
 
-    List<String> getAbbreviations();
-    List<String> getStartTime();
-    List<String> getEndTime();
+    Stream<String> getAbbreviations();
+    Stream<String> getStartTime();
+    Stream<String> getEndTime();
 }

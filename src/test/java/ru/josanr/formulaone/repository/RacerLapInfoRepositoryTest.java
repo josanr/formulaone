@@ -8,6 +8,7 @@ import ru.josanr.formulaone.model.RacerLapInfo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -48,19 +49,19 @@ class RacerLapInfoRepositoryTest {
     @BeforeEach
     void setUp() {
         this.inputFileReader = mock(LapInfoDatasource.class);
-        when(inputFileReader.getAbbreviations()).thenReturn(List.of(
+        when(inputFileReader.getAbbreviations()).thenReturn(Stream.of(
             "DRR_Daniel Ricciardo_RED BULL RACING TAG HEUER",
             "SVF_Sebastian Vettel_FERRARI",
             "LHM_Lewis Hamilton_MERCEDES"
         ));
 
-        when(inputFileReader.getStartTime()).thenReturn(List.of(
+        when(inputFileReader.getStartTime()).thenReturn(Stream.of(
             "DRR2018-05-24_12:14:12.054",
             "SVF2018-05-24_12:02:58.917",
             "LHM2018-05-24_12:18:20.125"
         ));
 
-        when(inputFileReader.getEndTime()).thenReturn(List.of(
+        when(inputFileReader.getEndTime()).thenReturn(Stream.of(
             "DRR2018-05-24_12:15:24.067",
             "SVF2018-05-24_12:04:03.332",
             "LHM2018-05-24_12:19:32.585"

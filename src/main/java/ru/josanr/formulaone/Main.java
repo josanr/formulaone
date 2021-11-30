@@ -6,9 +6,11 @@ import ru.josanr.formulaone.repository.RacerLapInfoRepositoryImpl;
 
 public class Main {
 
+    public static final int QUALIFIED_COUNT = 15;
+
     public static void main(String[] args) {
         var dataSource = new LapInfoResourceFileDatasource("abbreviations.txt", "start.log", "end.log");
-        var repository = new RacerLapInfoRepositoryImpl(dataSource, 15);
+        var repository = new RacerLapInfoRepositoryImpl(dataSource, QUALIFIED_COUNT);
         var formatter = new TextTableFormatter(repository);
 
         System.out.println(formatter.format());

@@ -49,8 +49,8 @@ public class RacerLapInfoRepositoryImpl implements RacerLapInfoRepository {
         return racersLaps.stream().filter(item -> index.equals(item.getId())).findFirst();
     }
 
-    private void fillEndData(LapInfoDatasource reader) {
-        var list = reader.getEndTime();
+    private void fillEndData(LapInfoDatasource datasource) {
+        var list = datasource.getEndTime();
         list.forEach(value -> {
             var index = parseIndex(value);
             var racerLap = this.getRacerById(index);
@@ -58,8 +58,8 @@ public class RacerLapInfoRepositoryImpl implements RacerLapInfoRepository {
         });
     }
 
-    private void fillStartData(LapInfoDatasource reader) {
-        var list = reader.getStartTime();
+    private void fillStartData(LapInfoDatasource datasource) {
+        var list = datasource.getStartTime();
         list.forEach(value -> {
             var index = parseIndex(value);
             var racerLap = this.getRacerById(index);
@@ -67,10 +67,10 @@ public class RacerLapInfoRepositoryImpl implements RacerLapInfoRepository {
         });
     }
 
-    private List<RacerLapInfo> getIndexedRacerLap(LapInfoDatasource reader) {
-        var abbreviationList = reader.getAbbreviations();
+    private List<RacerLapInfo> getIndexedRacerLap(LapInfoDatasource datasource) {
+        var abbreviationList = datasource.getAbbreviations();
 
-        return abbreviationList.stream()
+        return abbreviationList
             .map(line -> {
                 var items = line.split("_");
                 return new RacerLapInfo(items[0], items[1], items[2]);

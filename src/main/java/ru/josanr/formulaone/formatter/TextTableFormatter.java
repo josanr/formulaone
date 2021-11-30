@@ -10,6 +10,7 @@ import java.util.OptionalInt;
 public class TextTableFormatter implements QualificationFormatter {
 
     private static final int DEFAULT_COLUMN_WIDTH = 15;
+    public static final int FIXED_TABLE_ADDITION_WIDTH = 15;
     private final RacerLapInfoRepository repository;
     private int nameColumnWidth;
     private int teamColumnWidth;
@@ -27,7 +28,7 @@ public class TextTableFormatter implements QualificationFormatter {
         var allRacers = repository.findAll();
         nameColumnWidth = calculateNameColumnWidth(allRacers);
         teamColumnWidth = calculateTeamColumnWidth(allRacers);
-        int fullTableWidth = 15 + nameColumnWidth + teamColumnWidth;
+        int fullTableWidth = FIXED_TABLE_ADDITION_WIDTH + nameColumnWidth + teamColumnWidth;
 
         var qualified = repository.findQualified();
         for (RacerLapInfo lapInfo : qualified) {
